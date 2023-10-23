@@ -12,6 +12,7 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
+        int nbClick = 0;
         List<Button> btnList = new List<Button>();
         public Form1()
         {
@@ -22,6 +23,7 @@ namespace WindowsFormsApp1
         {
             CreateButtons(50);
             Initbuttons();
+            PlayerChange();
         }
 
         /// <summary>
@@ -32,11 +34,11 @@ namespace WindowsFormsApp1
         {
             int k = 0;
             btnList.Clear();
-            for(int x=0; x < 7;x++)
+            for (int x = 0; x < 7; x++)
             {
-                for(int y=0; y < 6; y++)
+                for (int y = 0; y < 6; y++)
                 {
- 
+
                     Button btn = new Button();
                     Controls.Add(btn);
                     btn.Size = new Size(taille, taille);
@@ -59,7 +61,42 @@ namespace WindowsFormsApp1
 
         private void button_Click(object sender, EventArgs e)
         {
-          
+            nbClick++;
+            var indice = btnList.IndexOf((Button)sender);
+            btnList[indice].Enabled = false;
+            EnableNextButton(indice);
+
+            if (lblPlayer.Text == "Joueur Rouge")
+            {
+                btnList[indice].BackColor = Color.Red;
+            }
+            else
+            {
+                btnList[indice].BackColor = Color.Yellow;
+            }
+            PlayerChange();
+        }
+
+        private void EnableNextButton(int indice)
+        {
+            if(indice != 0 && btnList[indice-1].BackColor == DefaultBackColor)
+            {
+            btnList[indice - 1].Enabled = true;
+            }
+        }
+
+        private void PlayerChange()
+        {
+            {
+                if (lblPlayer.Text == "Joueur Rouge")
+                {
+                    lblPlayer.Text = "Joueur Jaune";
+                }
+                else
+                {
+                    lblPlayer.Text = "Joueur Rouge";
+                }
+            }
         }
     }
 }

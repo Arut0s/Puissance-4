@@ -28,24 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblJoueur = new System.Windows.Forms.Label();
+            this.lblPlayer = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // lblJoueur
+            // lblPlayer
             // 
-            this.lblJoueur.AutoSize = true;
-            this.lblJoueur.Location = new System.Drawing.Point(12, 9);
-            this.lblJoueur.Name = "lblJoueur";
-            this.lblJoueur.Size = new System.Drawing.Size(46, 17);
-            this.lblJoueur.TabIndex = 0;
-            this.lblJoueur.Text = "label1";
+            this.lblPlayer.AutoSize = true;
+            this.lblPlayer.Location = new System.Drawing.Point(12, 9);
+            this.lblPlayer.Name = "lblPlayer";
+            this.lblPlayer.Size = new System.Drawing.Size(46, 17);
+            this.lblPlayer.TabIndex = 0;
+            this.lblPlayer.Text = "label1";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 554);
-            this.Controls.Add(this.lblJoueur);
+            this.Controls.Add(this.lblPlayer);
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -57,7 +57,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lblJoueur;
+        private System.Windows.Forms.Label lblPlayer;
     }
 }
 

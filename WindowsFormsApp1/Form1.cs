@@ -13,7 +13,6 @@ namespace WindowsFormsApp1
     public partial class Form1 : Form
     {
         int nbClick = 0;
-        Button btnCouleur = new Button();
         List<Button> btnList = new List<Button>();
         public Form1()
         {
@@ -22,10 +21,7 @@ namespace WindowsFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            CreateButtons(50);
-            Initbuttons();
-            PlayerChange();
-            WinDiagonale();
+            Initialisation();
         }
 
         /// <summary>
@@ -50,12 +46,10 @@ namespace WindowsFormsApp1
                     btnList.Add(btn);
                 }
             }
-            Controls.Add(btnCouleur);
-            btnCouleur.Size = new Size(30, 30);
-            btnCouleur.Visible = true;
-            btnCouleur.Enabled = false;
             btnCouleur.Location = new Point(15, 5);
-            btnCouleur.BackColor = Color.Red;
+            btnCouleur.Size = new Size(30, 30);
+            btnRejouer.Location = new Point(15 + (taille + 5) * 7, 40 + (taille + 5) * 5);
+            btnRejouer.Size = new Size(taille, taille);
         }
 
         private void Initbuttons()
@@ -69,10 +63,10 @@ namespace WindowsFormsApp1
         private void button_Click(object sender, EventArgs e)
         {
             nbClick++;
+            btnRejouer.Enabled = true;
             var indice = btnList.IndexOf((Button)sender);
             btnList[indice].Enabled = false;
             EnableNextButton(indice);
-
             if (lblPlayer.Text == "Au tour du joueur rouge")
             {
                 btnList[indice].BackColor = Color.Red;
@@ -90,12 +84,12 @@ namespace WindowsFormsApp1
                 }
                 if(btnList[indice].BackColor == Color.Red)
                 {
-                    lblPlayer.Text = "Le joueur rouge à gagné !";
+                    lblPlayer.Text = "Le joueur rouge a gagné !";
                     btnCouleur.BackColor = Color.Red;
                 }
                 else
                 {
-                    lblPlayer.Text = "Le joueur jaune à gagné !";
+                    lblPlayer.Text = "Le joueur jaune a gagné !";
                     btnCouleur.BackColor = Color.Yellow;
                 }
             }
@@ -113,7 +107,8 @@ namespace WindowsFormsApp1
         {
             if(indice != 0 && btnList[indice-1].BackColor == DefaultBackColor)
             {
-            btnList[indice - 1].Enabled = true;
+                btnList[indice - 1].Enabled = true;
+                btnList[indice - 1].Focus();
             }
         }
 
@@ -267,6 +262,32 @@ namespace WindowsFormsApp1
             }
             return false;
 
+        }
+
+        private void DeleteButtons()
+        {
+            foreach(Button btn in btnList)
+            {
+                this.Controls.Remove(btn);
+            }
+            btnList.Clear();
+        }
+
+        private void Initialisation()
+        {
+            nbClick = 0;
+            DeleteButtons();
+            CreateButtons(50);
+            Initbuttons();
+            PlayerChange();
+            btnRejouer.Enabled = false;
+            lblPlayer.Text = "Au tour du joueur rouge";
+            btnCouleur.BackColor = Color.Red;
+        }
+
+        private void btnRejouer_Click(object sender, EventArgs e)
+        {
+            Initialisation();
         }
     }
 }

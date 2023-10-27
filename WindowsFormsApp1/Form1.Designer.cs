@@ -34,7 +34,7 @@
             // lblPlayer
             // 
             this.lblPlayer.AutoSize = true;
-            this.lblPlayer.Location = new System.Drawing.Point(12, 9);
+            this.lblPlayer.Location = new System.Drawing.Point(64, 18);
             this.lblPlayer.Name = "lblPlayer";
             this.lblPlayer.Size = new System.Drawing.Size(46, 17);
             this.lblPlayer.TabIndex = 0;
@@ -44,7 +44,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(625, 485);
             this.Controls.Add(this.lblPlayer);
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
